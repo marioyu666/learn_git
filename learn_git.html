@@ -1,0 +1,20 @@
+def MAE_loss(y, y_hat):
+	return np.mean(np.abs(y_hat - y))
+
+def MSE_loss(y, y_hat):
+	return np.mean(np.square(y_hat - y))
+
+y_hat = np.array([-2, -1, -1, 3, 5])
+print(MAE_loss(y, y_hat))
+
+def linear(x, k, b):
+	y = k*x +b
+	return y
+
+# K的梯度
+def gradient_k(x, y, y_hat):
+	n = len(y)
+	gradient = 0
+	for xi, yi, yi_hat in zip(list(x), list(y), list(y_hat)):
+		gradient += (yi_hat - yi) * xi
+	return gradient/n
